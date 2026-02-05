@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose & Flower Gift - Grow Something Beautiful</title>
+    <meta name="description"
+        content="Choose a flower, generate a link, and send a magical growing gift to your loved ones.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="dark-mode">
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard">
+        <div class="glass-container">
+            <header>
+                <h1>Flower Gift Generator</h1>
+                <p>Pick a flower to send as a magical gift</p>
+            </header>
+
+            <div class="flower-selection">
+                <div class="flower-grid" id="flower-grid">
+                    <!-- Flowers will be injected here via JS -->
+                </div>
+            </div>
+
+            <div id="rose-options" class="rose-options hidden">
+                <h3>Select Rose Color</h3>
+                <div class="color-picker" id="color-picker">
+                    <button class="color-btn active" data-color="red" style="--btn-color: #ff2e63;"></button>
+                    <button class="color-btn" data-color="pink" style="--btn-color: #ff75a0;"></button>
+                    <button class="color-btn" data-color="white" style="--btn-color: #f9f9f9;"></button>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="generate-btn" class="primary-btn">Generate Gift Link</button>
+                <div id="link-display" class="link-display hidden">
+                    <input type="text" id="share-url" readonly>
+                    <button id="copy-btn">Copy Link</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Viewer Section -->
+    <section id="viewer" class="viewer hidden">
+        <div class="bg-decor">
+            <div class="circle c1"></div>
+            <div class="circle c2"></div>
+            <div class="circle c3"></div>
+        </div>
+        <canvas id="flower-canvas"></canvas>
+        <div class="viewer-ui">
+            <h2 id="gift-message">Tap anywhere to grow flowers</h2>
+        </div>
+    </section>
+
+    <script src="flower-engine.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

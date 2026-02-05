@@ -1,0 +1,363 @@
+:root {
+    --bg-color: #050505;
+    /* Lavender Blush */
+    --vibrant-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent-color: #ff2e63;
+    --cute-pink: #ff75a0;
+    --cute-purple: #9d50bb;
+    --cute-coral: #ff7e5f;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --font-main: 'Inter', sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Dashboard Styles */
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 46, 99, 0.15), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(157, 80, 187, 0.15), transparent 40%),
+        var(--bg-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/stardust.pattern.svg');
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+header h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+header p {
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.flower-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.flower-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #ffffff;
+    border-radius: 16px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.flower-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.flower-card.active {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.flower-icon {
+    font-size: 2rem;
+}
+
+.flower-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.rose-options {
+    margin: 20px 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--glass-border);
+    animation: fadeIn 0.4s easeOut;
+}
+
+.color-picker {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.color-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background-color: var(--btn-color);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.color-btn:hover {
+    transform: scale(1.1);
+}
+
+.color-btn.active {
+    border-color: #ffffff;
+    transform: scale(1.2);
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #ff2e63, #ff75a0);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 46, 99, 0.4);
+}
+
+.link-display {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+}
+
+.link-display input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: monospace;
+    padding: 5px;
+}
+
+#copy-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+#copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Viewer Styles */
+.viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.viewer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent, rgba(0, 0, 0, 0.6));
+    pointer-events: none;
+}
+
+#flower-canvas {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px rgba(255, 46, 99, 0.3));
+}
+
+.viewer-ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 40px;
+    pointer-events: none;
+}
+
+#gift-message {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.secondary-btn {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s;
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .glass-container {
+        padding: 20px;
+        margin: 10px;
+        width: 95%;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .flower-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 columns on mobile */
+        gap: 10px;
+    }
+
+    .flower-card {
+        padding: 10px;
+    }
+
+    .flower-icon {
+        font-size: 1.5rem;
+    }
+
+    .flower-name {
+        font-size: 0.75rem;
+    }
+
+    .color-btn {
+        width: 40px;
+        /* Larger touch target */
+        height: 40px;
+    }
+
+    #gift-message {
+        font-size: 1rem;
+        padding: 0 20px;
+        text-align: center;
+    }
+}
